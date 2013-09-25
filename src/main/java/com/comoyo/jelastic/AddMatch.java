@@ -36,6 +36,14 @@ public class AddMatch extends HttpServlet {
             doGet(req, resp);
             return;
         }
+        PersistentStorage.storeMatch(winner, loser);
+        resp.setContentType("text/html");
+        resp.getWriter().print(HTML_HEADER);
+        resp.getWriter().println("Last 6 matches: <br><pre>");
+        resp.getWriter().println(PersistentStorage.getMatches(6));
+        resp.getWriter().println("</pre>");
+        resp.getWriter().println("<br> <a href=\"ranking\">See ranking</a><br>");
+        resp.getWriter().print(FORM_CONTENT + HTML_FOOTER);
 
     }
 }
