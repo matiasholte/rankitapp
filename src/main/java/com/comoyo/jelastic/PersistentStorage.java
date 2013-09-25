@@ -32,7 +32,8 @@ public class PersistentStorage {
         final DB pingpong = mongoClient.getDB("pingpong");
         final boolean auth = pingpong.authenticate("admin", "XIyqkxSMgQ".toCharArray());
         if (!auth) {
-            throw new RuntimeException("Mongo authentication failed!");
+            return pingpong;
+            //throw new RuntimeException("Mongo authentication failed!");
         }
         return pingpong;
     }
