@@ -5,7 +5,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
+import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import java.util.Date;
 
@@ -23,9 +23,9 @@ public class PersistentStorage {
     }
 
     private static DB getDB() {
-        MongoClient mongoClient;
+        Mongo mongoClient;
         try {
-            mongoClient = new MongoClient("mongodb-rankitapp.jelastic.dogado.eu");
+            mongoClient = new Mongo("mongodb-rankitapp.jelastic.dogado.eu", 27017);
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
