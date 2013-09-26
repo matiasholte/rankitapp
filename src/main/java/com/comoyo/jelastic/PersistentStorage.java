@@ -46,7 +46,8 @@ public class PersistentStorage {
         DBCursor cursor = matchesTable.find(query).sort(new BasicDBObject("date", 1)).limit(limit);
         String result = "";
         for (DBObject dbObject : cursor) {
-            result = result + dbObject + "\n";
+            result = result + dbObject.get("winner") + " beat " + dbObject.get("loser") + " at " +
+                    dbObject.get("date") + "\n";
         }
         return result;
     }
