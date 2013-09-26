@@ -53,7 +53,7 @@ public class PersistentStorage {
     public static Person getPerson(final String name) {
         final DB pingpong = getDB();
         DBCollection personTable = pingpong.getCollection("persons");
-        BasicDBObject query = new BasicDBObject("name", 1);
+        BasicDBObject query = new BasicDBObject("name", name);
         DBObject dbObject = personTable.findOne(query);
         if (dbObject == null) {
             return new Person(name, 1200);
