@@ -41,9 +41,7 @@ public class PersistentStorage {
     public static String getMatches(final int limit) {
         final DB pingpong = getDB();
         DBCollection matchesTable = pingpong.getCollection("matches");
-        BasicDBObject query = new BasicDBObject();
-        query.put("winner", 1);
-        DBCursor cursor = matchesTable.find().sort(new BasicDBObject("date", 1)).limit(limit);
+        DBCursor cursor = matchesTable.find().sort(new BasicDBObject("date", -1)).limit(limit);
         String result = "";
         for (DBObject dbObject : cursor) {
             result = result + dbObject.get("winner") + " beat " + dbObject.get("loser") + " at " +

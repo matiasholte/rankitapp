@@ -11,6 +11,6 @@ public class Ranking extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/plain");
-        resp.getWriter().println("Hello ranking!");
+        resp.getWriter().print(PersistentStorage.getRankingList());
     }
 }
