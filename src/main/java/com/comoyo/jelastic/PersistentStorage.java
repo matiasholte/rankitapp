@@ -70,7 +70,7 @@ public class PersistentStorage {
         updatedPerson.put("name", person.name);
         updatedPerson.put("ranking", person.ranking);
 
-        personTable.update(query, new BasicDBObject("$set", updatedPerson));
+        personTable.update(query, new BasicDBObject("$set", updatedPerson), true, false);
     }
 
     public static String getRankingList() {
