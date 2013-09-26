@@ -38,14 +38,6 @@ public class AddMatch extends HttpServlet {
             return;
         }
         PersistentStorage.storeMatch(winner, loser);
-        resp.setContentType("text/html");
-        resp.getWriter().print(HTML_HEADER);
-        resp.getWriter().println("Last 6 matches: <br><pre>");
-        resp.getWriter().println(PersistentStorage.getMatches(6));
-        resp.getWriter().println("</pre>");
-        resp.getWriter().println("<br> <a href=\"ranking\">See ranking</a><br>");
-        resp.getWriter().print(FORM_CONTENT + PersistentStorage.getRankingList() + HTML_FOOTER);
-
         Person winnerPerson = PersistentStorage.getPerson(winner);
         Person loserPerson = PersistentStorage.getPerson(loser);
         double rankingChange = getRankingChange(winnerPerson.ranking, loserPerson.ranking);
@@ -53,6 +45,14 @@ public class AddMatch extends HttpServlet {
         loserPerson.ranking -= rankingChange;
         PersistentStorage.setPerson(winnerPerson);
         PersistentStorage.setPerson(loserPerson);
+
+        resp.setContentType("text/html");
+        resp.getWriter().print(HTML_HEADER);
+        resp.getWriter().println("Last 6 matches: <br><pre>");
+        resp.getWriter().println(PersistentStorage.getMatches(6));
+        resp.getWriter().println("</pre>");
+        resp.getWriter().println("<br> <a href=\"ranking\">See ranking</a><br>");
+        resp.getWriter().print(FORM_CONTENT + PersistentStorage.getRankingList() + HTML_FOOTER);
     }
 
     /**
