@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Ranking extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plain");
-        resp.getWriter().println("Full ranking");
+        resp.setContentType("text/html");
+        resp.getWriter().println("Full ranking <br>");
         resp.getWriter().print(PersistentStorage.getRankingList());
     }
 }

@@ -15,7 +15,7 @@ public class AddMatch extends HttpServlet {
             "<form action=\"add\" method=\"post\">\n"
             + "Winner: <input type=\"text\" name=\"winner\"><br />\n"
             + "Loser: <input type=\"text\" name=\"loser\"><br />\n"
-            + "<input type=\"submit\" name=\"submit\" value=\"submit\">\n";
+            + "<input type=\"submit\" name=\"submit\" value=\"submit\"><br />\n";
     public static final String HTML_FOOTER =
             "</body>\n"
             + "</html>";

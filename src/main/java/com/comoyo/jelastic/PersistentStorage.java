@@ -76,10 +76,10 @@ public class PersistentStorage {
     public static String getRankingList() {
         final DB pingpong = getDB();
         DBCollection matchesTable = pingpong.getCollection("persons");
-        DBCursor cursor = matchesTable.find().sort(new BasicDBObject("ranking", 1));
+        DBCursor cursor = matchesTable.find().sort(new BasicDBObject("ranking", -1));
         String result = "";
         for (DBObject dbObject : cursor) {
-            result = result + dbObject + "\n";
+            result = result + dbObject.get("name") + ": " + dbObject.get("ranking") + "<br>\n";
         }
         return result;
     }
